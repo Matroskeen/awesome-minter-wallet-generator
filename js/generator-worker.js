@@ -14,7 +14,7 @@ function getPerfectMatch(rule, mode) {
   }
   postMessage(message);
 
-  sleep(50).then(() => {
+  sleep(25).then(() => {
     getPerfectMatch(rule, mode);
   });
 }

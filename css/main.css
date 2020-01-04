@@ -113,9 +113,11 @@ button {
 button#gen-start {
   background-color: #00695c;
   margin-right: 5px;
+  border-color: #00695c;
 }
 button#gen-stop {
   background-color: #ec5c24;
+  border-color: #ec5c24;
 }
 
 #mnemonic-description {
@@ -161,4 +163,5 @@ button#gen-stop {
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
+  cursor: pointer;
 }
