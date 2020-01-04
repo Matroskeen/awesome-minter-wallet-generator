@@ -1,0 +1,164 @@
+body {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+
+  height: 100%;
+  margin: 0;
+  font-family: Ubuntu,system-ui,-apple-system,Segoe UI,Roboto,Cantarell,Noto Sans,sans-serif,SimSun,PingFang SC,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #222;
+  font-weight: 400;
+  background: #f6f6f6;
+}
+
+h1 {
+  text-align: center;
+  color: #212121;
+}
+
+a {
+  color: #ec5c24;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+form {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+@media (min-width: 500px) {
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 1px solid #d3d3d3;
+    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  }
+}
+
+.form-section {
+  padding: 7px 20px;
+}
+
+.form-description {
+  font-size: 12px;
+}
+
+.divider {
+  height: 1px;
+  margin: 7px 0;
+  background-color: #f0f0f0;
+}
+
+input {
+  padding: 5px;
+  box-sizing: border-box;
+
+  font-size: 14px;
+  color: #222;
+  background: padding-box #fff;
+  border: 2px solid #d3d3d3;
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: block;
+  pointer-events: auto;
+  border-radius: 5px;
+  outline: none;
+  caret-color: #00695c;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+input:active,
+input:focus {
+  border-color: #00695c;
+}
+
+.inline-label {
+  display: flex;
+  justify-content: flex-start;
+}
+
+input.error {
+  border-color: #b71c1c;
+}
+
+input.error:valid {
+  border-color: #00695c;
+}
+
+button {
+  padding: 10px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+button#gen-start {
+  background-color: #00695c;
+  margin-right: 5px;
+}
+button#gen-stop {
+  background-color: #ec5c24;
+}
+
+#mnemonic-description {
+  padding: 10px 0;
+}
+#mnemonic {
+  font-size: 16px;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+}
+#attempts {
+  font-size: 12px;
+  padding-left: 3px;
+  padding-top: 3px;
+}
+
+.copyright {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.links {
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.links a {
+  margin: 0 5px;
+}
+
+.thanks {
+  padding: 75px 0 25px;
+  text-align: center;
+}
+
+.our-address {
+  padding: 10px 0;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+}

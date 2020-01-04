@@ -1,0 +1,140 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Generate Awesome Wallet | Minter Network</title>
+    <meta name="description" content="Here you can generate your awesome Minter wallet just with a few clicks. Try it!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/radio.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Here you can generate your awesome <a href="https://www.minter.network" target="_blank">Minter</a> wallet</h1>
+      <form>
+        <div class="form-section">
+          <label>
+            What characters would you like to have in your address?
+            <input type="text" id="in" required>
+          </label>
+          <span class="form-description">More characters make your chances fewer</span>
+        </div>
+
+        <div class="form-section control-group">
+          <div>Where would you like to have these characters?</div>
+          <label class="inline-label control control-radio">
+            In the end of the address
+            <input type="radio" name="mode" value="end" checked>
+            <div class="control_indicator"></div>
+          </label>
+          <label class="inline-label control control-radio">
+            Anywhere (position doesn't matter)
+            <input type="radio" name="mode" value="all">
+            <div class="control_indicator"></div>
+          </label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="form-section">
+          <label>
+            Generated Address:
+            <input type="text" id="out">
+          </label>
+          <span id="attempts" style="display: none">Attempts: <span id="counter">0</span></span>
+        </div>
+
+        <div class="form-section">
+          <button type="button" id="gen-start" onclick="start()">Start</button>
+          <button type="button" id="gen-stop" onclick="stop()">Stop</button>
+        </div>
+
+        <div id="mnemonic-information" style="display: none;">
+          <div class="divider"></div>
+
+          <div class="form-section">
+            <div id="mnemonic-description">Save this seed phrase in case you really like generated address and plan to use it in the future.</div>
+            <strong id="mnemonic"></strong>
+          </div>
+        </div>
+      </form>
+
+      <div class="copyright">Made with <span style="font-size: 18px">&#129505;</span>for Minter Community by:</div>
+      <div class="links">
+        <a href="https://github.com/Matroskeen/awesome-minter-wallet-generator" target="_blank"><img src="img/github.svg" height="32" width="32"></a>
+        <a href="https://t.me/onebipru" target="_blank"><img src="img/telegram.svg" height="32" width="32"></a>
+      </div>
+
+      <div class="thanks">
+        <div>If you want to support our channel or just want to say "Thank You":</div>
+        <div class="our-address">Mx5d7a13c429965ab4b5e5179cd889fe4d8e7e1840</div>
+        <img src="img/qr.png" height="125" width="125">
+      </div>
+    </div>
+
+    <script>
+      var w;
+      function start() {
+        var inEl = document.getElementById("in");
+        if (inEl.value == "") {
+          if (!inEl.classList.contains('error')) {
+            inEl.classList.add('error');
+          }
+          return;
+        }
+
+        var mnemonicEl = document.getElementById("mnemonic");
+        var counterEl = document.getElementById("counter");
+        var outEl = document.getElementById("out");
+        var mnemonicInfoEl = document.getElementById("mnemonic-information");
+        var attemptsEl = document.getElementById("attempts");
+
+        clear([mnemonicEl]);
+        display([mnemonicInfoEl], "none");
+        display([attemptsEl], "block");
+
+        if (typeof(Worker) !== "undefined") {
+          if (typeof(w) == "undefined") {
+            w = new Worker("js/generator-worker.js");
+            w.postMessage({
+              rule: inEl.value,
+              mode: document.querySelector('input[name="mode"]:checked').value,
+            });
+          }
+          w.onmessage = function(event) {
+            outEl.value = event.data.address;
+            counterEl.innerHTML = parseInt(counterEl.innerHTML) + 1;
+
+            if (event.data.mnemonic != null) {
+              stop();
+              mnemonicEl.innerHTML = event.data.mnemonic;
+              display([mnemonicInfoEl], "block");
+            }
+          };
+        } else {
+          mnemonicEl.innerHTML = "Sorry! No Web Worker support.";
+        }
+      }
+
+      function clear(elements) {
+        elements.forEach(function (element) {
+          element.innerHTML = "";
+        });
+      }
+
+      function display(elements, display) {
+        elements.forEach(function (element) {
+          element.style.display = display;
+        });
+      }
+
+      function stop() {
+        w.terminate();
+        w = undefined;
+      }
+    </script>
+  </body>
+</html>
