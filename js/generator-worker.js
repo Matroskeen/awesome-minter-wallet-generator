@@ -9,17 +9,14 @@ function getPerfectMatch(inputValue, mode) {
   var message = {
     address: address,
     mnemonic: wallet.getMnemonic(),
-    match: false
+    match: false,
+    input: inputValue
   };
 
   if ((mode === "all" && address.includes(inputValue)) || (mode === "end" && address.includes(inputValue, address.length - inputValue.length))) {
     message.match = true;
   }
   postMessage(message);
-
-  if (!message.match) {
-    sleep(10).then(() => getPerfectMatch(inputValue, mode));
-  }
 }
 
 function sleep (time) {
@@ -27,5 +24,5 @@ function sleep (time) {
 }
 
 self.addEventListener("message", function(e) {
-  getPerfectMatch(e.data.rule, e.data.mode);
+  sleep(10).then(() => getPerfectMatch(e.data.rule, e.data.mode));
 }, false);

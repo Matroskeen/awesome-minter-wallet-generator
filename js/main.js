@@ -16,7 +16,6 @@ function start() {
 
   var inEl = document.getElementById("in");
   var counterEl = document.getElementById("counter");
-  var outEl = document.getElementById("out");
   var attemptsEl = document.getElementById("attempts");
 
   // Let's go back to initial state after refresh (stop-start).
@@ -35,13 +34,19 @@ function start() {
   worker.onmessage = function(event) {
     generatedWallet = event.data;
 
-    outEl.innerHTML = generatedWallet.address;
+    generatedAddressShow(generatedWallet);
     counterEl.innerHTML = parseInt(counterEl.innerHTML) + 1;
 
     if (generatedWallet.match) {
       stop();
       mnemonicInfoShow();
       playSound("success");
+    }
+    else {
+      worker.postMessage({
+        rule: inEl.value,
+        mode: document.querySelector('input[name="mode"]:checked').value,
+      });
     }
   };
 }
@@ -85,6 +90,11 @@ function mnemonicInfoHide() {
 
 function generationInfoShow() {
   display(["generation-info", "generation-divider"], "block");
+}
+
+function generatedAddressShow(wallet, input) {
+  var reg = new RegExp(wallet.input, 'gi');
+  document.getElementById("out").innerHTML = wallet.address.replace(reg, function(str) {return '<span class="match">' + str + '</span>'});
 }
 
 function validateInput() {

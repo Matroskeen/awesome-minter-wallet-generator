@@ -167,3 +167,7 @@ button#gen-stop {
 .address.our {
   padding: 10px 0;
 }
+
+.match {
+  color: #ec5c24;
+}
