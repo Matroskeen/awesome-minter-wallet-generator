@@ -128,6 +128,7 @@ button#gen-stop {
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
+  cursor: pointer;
 }
 #attempts {
   font-size: 12px;

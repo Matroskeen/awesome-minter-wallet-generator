@@ -18,7 +18,7 @@ function getPerfectMatch(inputValue, mode) {
   postMessage(message);
 
   if (!message.match) {
-    getPerfectMatch(inputValue, mode)
+    getPerfectMatch(inputValue, mode);
   }
 }
 
