@@ -18,8 +18,12 @@ function getPerfectMatch(inputValue, mode) {
   postMessage(message);
 
   if (!message.match) {
-    getPerfectMatch(inputValue, mode);
+    sleep(10).then(() => getPerfectMatch(inputValue, mode));
   }
+}
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 self.addEventListener("message", function(e) {
