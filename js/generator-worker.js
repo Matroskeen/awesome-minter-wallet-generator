@@ -17,13 +17,9 @@ function getPerfectMatch(inputValue, mode) {
   }
   postMessage(message);
 
-  sleep(25).then(() => {
-    getPerfectMatch(inputValue, mode);
-  });
-}
-
-function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
+  if (!message.match) {
+    getPerfectMatch(inputValue, mode)
+  }
 }
 
 self.addEventListener("message", function(e) {
