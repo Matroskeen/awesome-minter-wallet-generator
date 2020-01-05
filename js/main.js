@@ -41,6 +41,7 @@ function start() {
     if (generatedWallet.match) {
       stop();
       mnemonicInfoShow();
+      playSound("success");
     }
   };
 }
