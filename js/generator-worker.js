@@ -1,21 +1,24 @@
 importScripts('https://unpkg.com/minterjs-wallet');
 
-function getPerfectMatch(rule, mode) {
+function getPerfectMatch(inputValue, mode) {
   var wallet = minterWallet.generateWallet();
   var address = wallet.getAddressString();
 
+  inputValue = inputValue.toLowerCase().trim();
+
   var message = {
     address: address,
-    mnemonic: null,
+    mnemonic: wallet.getMnemonic(),
+    match: false
   };
 
-  if ((mode === "all" && address.includes(rule)) || (mode === "end" && address.includes(rule, address.length - rule.length))) {
-    message.mnemonic = wallet.getMnemonic();
+  if ((mode === "all" && address.includes(inputValue)) || (mode === "end" && address.includes(inputValue, address.length - inputValue.length))) {
+    message.match = true;
   }
   postMessage(message);
 
   sleep(25).then(() => {
-    getPerfectMatch(rule, mode);
+    getPerfectMatch(inputValue, mode);
   });
 }
 

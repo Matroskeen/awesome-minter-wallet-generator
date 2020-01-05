@@ -97,9 +97,8 @@ input:focus {
 input.error {
   border-color: #b71c1c;
 }
-
-input.error:valid {
-  border-color: #00695c;
+.form-error {
+  color: #b71c1c;
 }
 
 button {
@@ -121,7 +120,7 @@ button#gen-stop {
 }
 
 #mnemonic-description {
-  padding: 10px 0;
+  padding-bottom: 10px;
 }
 #mnemonic {
   font-size: 16px;
@@ -132,7 +131,6 @@ button#gen-stop {
 }
 #attempts {
   font-size: 12px;
-  padding-left: 3px;
   padding-top: 3px;
 }
 
@@ -153,15 +151,18 @@ button#gen-stop {
 }
 
 .thanks {
-  padding: 75px 0 25px;
+  padding: 50px 0 25px;
   text-align: center;
 }
 
-.our-address {
-  padding: 10px 0;
+.address {
   -webkit-user-select: all;
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
   cursor: pointer;
+}
+
+.address.our {
+  padding: 10px 0;
 }
