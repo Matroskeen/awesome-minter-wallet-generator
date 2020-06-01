@@ -9,7 +9,7 @@ body {
   flex-direction: column;
   height: 100%;
   margin: 0;
-  font-family: Ubuntu, system-ui, -apple-system, Segoe UI, Roboto, Cantarell, Noto Sans, sans-serif, SimSun, PingFang SC, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-family: Ubuntu,system-ui,-apple-system,Segoe UI,Roboto,Cantarell,Noto Sans,sans-serif,SimSun,PingFang SC,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-size: 14px;
   line-height: 1.4;
   color: #222;
@@ -26,7 +26,6 @@ a {
   color: #ec5c24;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
@@ -44,10 +43,11 @@ form {
     margin: 20px auto;
     border-radius: 10px;
     border: 1px solid #d3d3d3;
-    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
   }
 }
+
 .form-section {
   padding: 7px 20px;
 }
@@ -65,12 +65,13 @@ form {
 input {
   padding: 5px;
   box-sizing: border-box;
+
   font-size: 14px;
   color: #222;
   background: padding-box #fff;
   border: 2px solid #d3d3d3;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: .2s;
+  transition: .2s;
   display: block;
   pointer-events: auto;
   border-radius: 5px;
@@ -78,7 +79,7 @@ input {
   caret-color: #00695c;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
 }
 
@@ -95,7 +96,6 @@ input:focus {
 input.error {
   border-color: #b71c1c;
 }
-
 .form-error {
   color: #b71c1c;
 }
@@ -113,7 +113,6 @@ button#gen-start {
   margin-right: 5px;
   border-color: #00695c;
 }
-
 button#gen-stop {
   background-color: #ec5c24;
   border-color: #ec5c24;
@@ -122,7 +121,6 @@ button#gen-stop {
 #mnemonic-description {
   padding-bottom: 10px;
 }
-
 #mnemonic {
   font-size: 16px;
   -webkit-user-select: all;
@@ -131,7 +129,6 @@ button#gen-stop {
   user-select: all;
   cursor: pointer;
 }
-
 #attempts {
   font-size: 12px;
   padding-top: 3px;
@@ -148,13 +145,15 @@ button#gen-stop {
   justify-content: center;
   -webkit-align-items: center;
   align-items: center;
-}
-.copyright .heart {
-  height: 14px;
-  padding: 0 4px;
-}
-.copyright .heart svg path {
-  fill: #ec5c24;
+  .heart{
+    height: 14px;
+    padding: 0 4px;
+    svg{
+      path{
+        fill:#ec5c24;
+      }
+    }
+  }
 }
 
 .links {
@@ -188,5 +187,3 @@ button#gen-stop {
 .match {
   color: #ec5c24;
 }
-
-/*# sourceMappingURL=main.css.map */
