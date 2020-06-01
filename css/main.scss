@@ -37,17 +37,6 @@ form {
   padding: 20px 0;
 }
 
-@media (min-width: 500px) {
-  form {
-    max-width: 400px;
-    margin: 20px auto;
-    border-radius: 10px;
-    border: 1px solid #d3d3d3;
-    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.2);
-    box-shadow: 0 4px 8px rgba(0,0,0,.2);
-  }
-}
-
 .form-section {
   padding: 7px 20px;
   text-align: center;
@@ -194,4 +183,19 @@ button#gen-clear {
 
 .match {
   color: #ec5c24;
+}
+
+@media (min-width: 500px) {
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 1px solid #d3d3d3;
+    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  }
+
+  .address{
+    word-break: keep-all;
+  }
 }

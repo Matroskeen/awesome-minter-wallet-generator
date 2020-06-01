@@ -30,7 +30,7 @@
         <div class="form-section">
           <label>
             What characters would you like to have in your address?
-            <input type="text" id="in" required>
+            <input type="text" id="in" required placeholder="Prefix">
           </label>
           <div class="form-description form-error" id="input-error"></div>
           <span class="form-description">More characters make your chances fewer</span>
@@ -39,12 +39,17 @@
         <div class="form-section control-group">
           <div>Where would you like to have these characters?</div>
           <label class="inline-label control control-radio">
-            In the end of the address
-            <input type="radio" name="mode" value="end" checked>
+            <span class="inline-label-text">Prefix</span>
+            <input type="radio" name="mode" value="prefix" checked>
             <div class="control_indicator"></div>
           </label>
           <label class="inline-label control control-radio">
-            Anywhere (position doesn't matter)
+            <span class="inline-label-text">Suffix</span>
+            <input type="radio" name="mode" value="suffix">
+            <div class="control_indicator"></div>
+          </label>
+          <label class="inline-label control control-radio">
+            <span class="inline-label-text">Anywhere</span>
             <input type="radio" name="mode" value="all">
             <div class="control_indicator"></div>
           </label>

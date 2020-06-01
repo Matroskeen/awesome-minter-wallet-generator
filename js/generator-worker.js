@@ -13,7 +13,11 @@ function getPerfectMatch(inputValue, mode) {
     input: inputValue
   };
 
-  if ((mode === "all" && address.includes(inputValue)) || (mode === "end" && address.includes(inputValue, address.length - inputValue.length))) {
+  var isAllMatched = (mode === "all" && address.includes(inputValue));
+  var isSuffixMatched = (mode === "suffix" && address.includes(inputValue, address.length - inputValue.length));
+  var isPrefixMatched = (mode === "prefix" && address.startsWith(inputValue, 2));
+
+  if (isAllMatched || isSuffixMatched || isPrefixMatched) {
     message.match = true;
   }
   postMessage(message);

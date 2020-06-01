@@ -3,6 +3,14 @@ window.onload = function() {
   document.getElementById("gen-stop").onclick = stop;
   document.getElementById("gen-clear").onclick = ConfirmDelete;
 
+  var radiobuttons = document.getElementsByName("mode");
+
+  for (var i = 0; i < radiobuttons.length; i++) {
+    radiobuttons[i].addEventListener('change', function(e) {
+      document.getElementById("in").placeholder = e.target.parentElement.querySelector('.inline-label-text').innerHTML;
+    });
+  }
+
   document.getElementById("in").addEventListener('keyup', function() {
     validateInput();
   });
