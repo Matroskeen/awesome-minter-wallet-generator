@@ -1,6 +1,7 @@
 window.onload = function() {
   document.getElementById("gen-start").onclick = start;
   document.getElementById("gen-stop").onclick = stop;
+  document.getElementById("gen-clear").onclick = ConfirmDelete;
 
   document.getElementById("in").addEventListener('keyup', function() {
     validateInput();
@@ -60,10 +61,25 @@ function stop() {
   mnemonicInfoShow();
 }
 
+function reset() {
+  stop();
+  mnemonicInfoHide();
+  generationInfoHide();
+  clear(document.getElementById("out"));
+  document.getElementById("counter").innerHTML = "0";
+  document.getElementById("in").value = "";
+}
+
 function clear(elements) {
-  elements.forEach(function (element) {
-    element.innerHTML = "";
-  });
+  if (elements instanceof Array) {
+    elements.forEach(function (element) {
+      element.innerHTML = "";
+    });
+  } else {
+    elements.innerHTML = "";
+  }
+
+
 }
 
 function display(elements, display) {
@@ -74,6 +90,16 @@ function display(elements, display) {
     element.style.display = display;
   });
 }
+
+function ConfirmDelete() {
+  let x = confirm("Are you sure you want to proceed?");
+  if (x){
+    reset();
+  }
+  else
+    return false;
+}
+
 
 function mnemonicInfoShow() {
   if (typeof generatedWallet !== "undefined" && generatedWallet.mnemonic !== null) {
@@ -89,6 +115,10 @@ function mnemonicInfoHide() {
 
 function generationInfoShow() {
   display(["generation-info", "generation-divider"], "block");
+}
+
+function generationInfoHide() {
+  display(["generation-info", "generation-divider"], "none");
 }
 
 function generatedAddressShow() {

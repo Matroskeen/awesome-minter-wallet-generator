@@ -50,6 +50,10 @@ form {
 
 .form-section {
   padding: 7px 20px;
+  text-align: center;
+  button{
+    margin-right: 5px
+  }
 }
 
 .form-description {
@@ -110,12 +114,15 @@ button {
 
 button#gen-start {
   background-color: #00695c;
-  margin-right: 5px;
   border-color: #00695c;
 }
 button#gen-stop {
   background-color: #ec5c24;
   border-color: #ec5c24;
+}
+button#gen-clear {
+  background-color: #b10000;
+  border-color: #b10000;
 }
 
 #mnemonic-description {
@@ -178,6 +185,7 @@ button#gen-stop {
   -ms-user-select: all;
   user-select: all;
   cursor: pointer;
+  word-break: break-all;
 }
 
 .address.our {
